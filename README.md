@@ -1,6 +1,5 @@
 # Leads Distributor Test Case
 
----
 
 ## Оглавление:
 - [О проекте](#о-проекте)
