@@ -4,3 +4,6 @@ sqlalchemy
 pydantic
 databases
 python-multipart
+pytest
+pytest-cov
+coverage

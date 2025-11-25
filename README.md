@@ -2,15 +2,11 @@
 
 ---
 
-# ОТ АВТОРА
-Проект сделан минимально-работоспособным, "на коленке". Код не красивый, документации нет, README тоже как попало. Сейчас сброшу на git а потом уже допилю до ума
-
-
 ## О проекте
 
 CRM, предназначенная для распределения лидов между операторами по источникам.
 
-**Цель проекта:** ааааааа.
+**Цель проекта:** Автоматическое распределение лидов между операторами с учётом их показателей и настроек распределения.
 
 ## Основные возможности
 
@@ -30,51 +26,26 @@ CRM, предназначенная для распределения лидов
 
 **База данных:** SQLite
 
-## Установка и запуск
-Рекомендуется создать виртуальное окружение и установить зависимости:
-
-### Клонирование проекта
-
-```bash
-git clone https://[актуальный адрес проекта].git
-cd leads_distributor_test_case
+## Структура проекта
 ```
+leads_distributor_test_case/
+├── Dockerfile
+├── README.md
+├── docker-compose.yml
+├── requirements.txt
+├── app
+│   ├── __init__.py
+│   ├── crud.py
+│   ├── database.py
+│   ├── main.py
+│   ├── models.py
+│   └── schemas.py
+└── tests
+    ├── __init__.py
+    ├── conftest.py
+    ├── test_crud.py
+    └── test_main.py
 
-
-### Создание виртуального окружения
-
-Для Windows:
-```bash
-python -m venv .venv
-```
-
-Для Linux:
-```bash
-python3 -m venv venv
-```
-
-### Активация виртуального окружения
-
-Для Windows:
-```bash
-.venv\Scripts\activate 
-```
-
-Для Linux:
-```bash
-source venv/bin/activate
-```
-
-### Установка зависимостей
-
-```bash
-pip install -r requirements.txt
-```
-
-
-## Запуск
-```bash
-uvicorn uvicorn app.main:app --reload
 ```
 
 ## API (основные эндпоинты)
@@ -86,3 +57,30 @@ uvicorn uvicorn app.main:app --reload
 - `POST /contacts/` — создать обращение
 - `GET /leads/` — список лидов
 - `GET /stats/` — основная статистика
+
+## Установка и запуск
+
+### Клонирование проекта
+
+```bash
+git clone https://[актуальный адрес проекта].git
+cd leads_distributor_test_case
+```
+
+### Запуск через Docker Compose
+
+```bash
+docker-compose up --build
+```
+
+Проект запущен. Swagger UI доступен по эндпоинту **/docs**
+
+## Тесты
+Запуск тестов:
+```bash
+pytest -v
+```
+Запуск тестов с покрытием:
+```bash
+pytest --cov=. --cov-report=term-missing
+```
